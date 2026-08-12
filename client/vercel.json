@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://mini-erp-backend.onrender.com/api/:path*"
+      "destination": "https://nexuserp-backend.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
