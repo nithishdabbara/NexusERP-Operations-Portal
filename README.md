@@ -71,7 +71,7 @@ npm run dev
 
 ---
 
-## 🐳 Docker Setup (Bonus Point)
+## 🐳 Docker Setup
 
 Run the full stack (Frontend, Backend & PostgreSQL) with a single command:
 
