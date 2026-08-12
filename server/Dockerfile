@@ -1,10 +1,11 @@
 FROM node:20-alpine
 
+# Install OpenSSL 1.1 compatibility package for Prisma Linux query engine
+RUN apk add --no-cache openssl openssl1.1-compat
+
 WORKDIR /app
 
 COPY package*.json ./
-COPY prisma ./prisma/
-
 RUN npm install
 
 COPY . .
