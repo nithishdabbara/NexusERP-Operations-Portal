@@ -1,23 +1,23 @@
 services:
   # 1. Online Backend REST API Service
   - type: web
-    name: mini-erp-backend
+    name: nexuserp-backend
     env: node
     region: singapore
     plan: free
     buildCommand: cd server && npm install && npx prisma generate && npm run build
-    startCommand: cd server && npx prisma db push && npx ts-node prisma/seed.ts && npm start
+    startCommand: cd server && npm start
     envVars:
       - key: PORT
         value: 5000
       - key: DATABASE_URL
-        sync: false
+        value: postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres
       - key: JWT_SECRET
-        generateValue: true
+        value: mini_erp_super_secret_jwt_key_2026
 
   # 2. Online React Frontend Web App
   - type: web
-    name: mini-erp-frontend
+    name: nexuserp-frontend
     env: static
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: ./client/dist
@@ -25,10 +25,3 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
-
-# 3. Online Managed PostgreSQL Database
-databases:
-  - name: mini-erp-db
-    plan: free
-    databaseName: minierpdb
-    user: minierpuser
