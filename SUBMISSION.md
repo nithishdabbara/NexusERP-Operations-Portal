@@ -19,8 +19,8 @@
 ---
 
 ### 3. Live Backend API URL
-- **Render Live API URL**: [https://nexuserp-backend.onrender.com/api](https://nexuserp-backend.onrender.com/api)
-- **API Health Check**: [https://nexuserp-backend.onrender.com/api/health](https://nexuserp-backend.onrender.com/api/health)
+- **Render Live API URL**: [https://nexuserp-backend-ja9d.onrender.com/api](https://nexuserp-backend-ja9d.onrender.com/api)
+- **API Health Check**: [https://nexuserp-backend-ja9d.onrender.com/api/health](https://nexuserp-backend-ja9d.onrender.com/api/health)
 - **Hosted Platform**: Render / AWS (Node.js + Express + TypeScript + Prisma ORM)
 - **Live Supabase Database URI**: `postgresql://postgres.ijnnazbvnufevfyappts:***@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres`
 
