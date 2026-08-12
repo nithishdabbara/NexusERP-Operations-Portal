@@ -147,8 +147,12 @@ Complete documentation is provided in [`README.md`](file:///e:/New%20folder/READ
 
 ---
 
-### 8. Known Limitations or Incomplete Parts
+### 🐳 Bonus Point: Docker Hub Container Images
 
-1. **Email/SMS Alert Integration**: Low stock alerts and customer follow-up reminders are currently displayed on the interactive dashboard UI. Automated email/SMS notifications (e.g. via Twilio or SendGrid) can be hooked into the stock adjustment endpoint.
-2. **Multi-Tenant Support**: Designed as a single-company wholesale operations portal for internal staff. Multi-organization isolation is not required for this case study.
-3. **AWS S3 Image Uploads**: Product thumbnails use category icons and SKU badges; AWS S3 bucket upload integration can be added as an optional bonus extension.
+Public Docker Hub images compiled and pushed for 1-command deployment:
+- **Backend API Container Image**: [`nithish1875/nexuserp-backend:latest`](https://hub.docker.com/r/nithish1875/nexuserp-backend)
+- **Frontend App Container Image**: [`nithish1875/nexuserp-frontend:latest`](https://hub.docker.com/r/nithish1875/nexuserp-frontend)
+
+```bash
+docker-compose up --build
+```
