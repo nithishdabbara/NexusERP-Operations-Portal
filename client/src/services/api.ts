@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || 'https://nexuserp-backend-ja9d.onrender.com/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
