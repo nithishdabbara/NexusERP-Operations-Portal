@@ -11,7 +11,7 @@ services:
       - key: PORT
         value: 5000
       - key: DATABASE_URL
-        value: "postgresql://postgres:P5Vqn0ALIGxUcJsG@db.ijnnazbvnufevfyappts.supabase.co:5432/postgres"
+        value: "postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
       - key: JWT_SECRET
         generateValue: true
 
