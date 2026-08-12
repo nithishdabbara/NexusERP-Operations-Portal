@@ -1,15 +1,16 @@
 # NexusERP Operations Portal
 
-A Mini ERP + CRM system built for a wholesale/distribution company to manage customers, stock inventory, and sales challans.
+A Mini ERP + CRM Operations Portal built for wholesale and distribution companies to manage customers, stock inventory, and sales challans.
 
 ---
 
-## 🔗 Project Links
+## 🔗 Live Project Links
 
 - **GitHub Repository**: [https://github.com/nithishdabbara/NexusERP-Operations-Portal](https://github.com/nithishdabbara/NexusERP-Operations-Portal)
 - **Live Frontend URL**: [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app)
 - **Live Backend API URL**: [https://nexuserp-backend.onrender.com/api](https://nexuserp-backend.onrender.com/api)
-- **Live Database**: Supabase PostgreSQL (`ijnnazbvnufevfyappts`)
+- **Postman API Collection**: [`postman_collection.json`](file:///e:/New%20folder/postman_collection.json) *(Root repository directory)*
+- **🎥 Screen Recording Walkthrough**: [Watch Full System Walkthrough Video](YOUR_SCREEN_RECORDING_LINK_HERE)
 
 ---
 
@@ -19,40 +20,38 @@ Password for all roles: `Password123!`
 
 | Role | Email | Password | Allowed Access |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@company.com` | `Password123!` | Full access across all modules |
-| **Sales** | `sales@company.com` | `Password123!` | Customer CRM, Follow-ups, Create/Confirm Challans |
+| **Admin** | `admin@company.com` | `Password123!` | Full access across all ERP & CRM modules |
+| **Sales** | `sales@company.com` | `Password123!` | Customer CRM, Follow-ups, Create/Confirm Sales Challans |
 | **Warehouse** | `warehouse@company.com` | `Password123!` | Products, Stock Adjustments (IN/OUT), Audit Logs |
 | **Accounts** | `accounts@company.com` | `Password123!` | View Challans, Financial Reports, Customer Lists |
 
 ---
 
-## 🏗️ Architecture Explanation
+## 💡 Architecture Decisions
 
-```
-[ React 18 Frontend (Vite) ] ──(REST API)──> [ Node.js + Express API ] ──(Prisma)──> [ Supabase PostgreSQL ]
-```
-
-- **Frontend**: React 18, TypeScript, Vite, responsive admin UI with role switching.
-- **Backend**: Node.js, Express.js, TypeScript, REST APIs with Zod schema validation.
-- **Database**: PostgreSQL on Supabase managed via Prisma ORM.
-- **Authentication**: JWT token authentication with role-based middleware guards.
-- **Business Logic**: Stock deduction on Challan confirmation runs inside atomic database transactions (`$transaction`) to prevent negative inventory. Line items preserve product price snapshots at creation time. PDF invoice streaming via `pdfkit`.
+- **Prisma ORM over Sequelize**: Type-safe auto-generated client and declarative schema migrations significantly reduce boilerplate and prevent runtime query errors.
+- **Supabase PostgreSQL**: Managed serverless PostgreSQL offering zero-maintenance cloud database hosting with built-in connection pooling.
+- **Atomic Database Transactions**: Sales Challan confirmation executes inside a Prisma `$transaction` lock. Stock levels are verified and deducted atomically alongside `OUT` audit log entries — either all operations succeed or all roll back safely.
+- **Historical Snapshot Preservation**: Line items store product snapshot data (`productName`, `productSku`, `unitPrice`) at creation time, preserving historical sales figures even if catalog prices or titles change later.
 
 ---
 
-## 🚀 Setup & Local Running
+## 🚀 Environment & Setup
 
-### Environment Variables (`server/.env`)
+### Environment Configuration (`server/.env`)
+
+Copy `server/.env.example` to `server/.env` and update your variables:
+
 ```env
 PORT=5000
-DATABASE_URL="postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
-JWT_SECRET="mini_erp_super_secret_jwt_key_2026"
+DATABASE_URL="postgresql://user:password@host:5432/dbname"
+JWT_SECRET="your_jwt_secret_here"
 ```
 
 ### Local Execution
 
 ```bash
-# 1. Backend Server
+# 1. Start Backend API
 cd server
 npm install
 npx prisma generate
@@ -60,20 +59,20 @@ npx prisma db push
 npx ts-node prisma/seed.ts
 npm run dev
 
-# 2. Frontend App (separate terminal)
+# 2. Start Frontend App (in separate terminal)
 cd client
 npm install
 npm run dev
 ```
 
-- Frontend: `http://localhost:3000`
-- Backend: `http://localhost:5000`
+- Frontend App: `http://localhost:3000`
+- Backend API: `http://localhost:5000`
 
 ---
 
 ## 🐳 Docker Setup
 
-Run the full stack (Frontend, Backend & PostgreSQL) with a single command:
+Run the full stack with a single command:
 
 ```bash
 docker-compose up --build
@@ -102,6 +101,6 @@ docker-compose up --build
 
 ## 🎯 Known Limitations & Assumptions
 
-1. **Email Alerts**: Low stock alerts are highlighted in real-time on the UI dashboard; email/SMS alerts can be integrated via webhooks.
-2. **Draft Challans**: Draft sales challans reserve no inventory until confirmed.
-3. **Single Company Scope**: Built specifically as an internal operations portal for a single distribution company.
+1. **Email Alerts**: Low stock alerts are highlighted in real-time on the UI dashboard; automated email/SMS reminders can be hooked into stock endpoints.
+2. **Draft Challans**: Draft sales orders reserve no inventory until confirmed.
+3. **Single Company Scope**: Internal operations portal tailored for wholesale distribution operations.

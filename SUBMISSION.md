@@ -22,7 +22,7 @@
 - **Render Live API URL**: `https://mini-erp-backend.onrender.com/api` *(or your Render/AWS deployment API URL)*
 - **API Health Check**: `https://mini-erp-backend.onrender.com/api/health`
 - **Hosted Platform**: Render / AWS (Node.js + Express + TypeScript + Prisma ORM)
-- **Live Supabase Database URI**: `postgresql://postgres:P5Vqn0ALIGxUcJsG@db.ijnnazbvnufevfyappts.supabase.co:5432/postgres`
+- **Live Supabase Database URI**: `postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres`
 
 ---
 
