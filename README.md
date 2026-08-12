@@ -40,16 +40,22 @@ Password for all roles: `Password123!`
 
 ---
 
-## 🚀 Setup & Local Running
+## 🛠️ Server Setup & Documentation
 
-### Environment Variables (`server/.env`)
-```env
-PORT=5000
-DATABASE_URL="postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
-JWT_SECRET="mini_erp_super_secret_jwt_key_2026"
-```
+### How Server Was Set Up
+- **Backend Architecture**: Node.js REST API with Express.js and TypeScript, structured with modular routes, controllers, and middleware guards.
+- **Database & ORM**: PostgreSQL database hosted on Supabase, managed via Prisma ORM for type-safe schema definitions and migration management.
+- **Authentication**: Stateless JWT token authentication with role-based access control (RBAC) middleware for `ADMIN`, `SALES`, `WAREHOUSE`, and `ACCOUNTS` roles.
 
-### Local Execution
+### How Environment Variables Are Managed
+- Environment variables are isolated using a `.env` file in `/server` (gitignored).
+- Variables required:
+  - `PORT`: Server port (default `5000` locally, assigned dynamically by Render/Cloud).
+  - `DATABASE_URL`: Supabase PostgreSQL pooler connection string.
+  - `JWT_SECRET`: Secret key for signing JWT tokens.
+- On live cloud platforms (Render/Vercel), environment variables are set directly in the platform settings dashboard.
+
+### How To Run Project Locally
 
 ```bash
 # 1. Backend Server
@@ -66,8 +72,12 @@ npm install
 npm run dev
 ```
 
-- Frontend: `http://localhost:3000`
-- Backend: `http://localhost:5000`
+- **Frontend App**: `http://localhost:3000`
+- **Backend Server**: `http://localhost:5000`
+
+### How To Deploy Project
+- **Backend (Render)**: Deploy as Web Service linked to GitHub repository. Set build command `cd server && npm install && npx prisma generate && npm run build` and start command `cd server && npm start`.
+- **Frontend (Vercel)**: Import GitHub repository, set Root Directory to `client`, build command `npm run build`, output directory `dist`.
 
 ---
 
