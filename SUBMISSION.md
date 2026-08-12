@@ -13,7 +13,7 @@
 ---
 
 ### 2. Live Frontend URL
-- **Vercel Live URL**: [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app)
+- **Vercel Live URL**: [https://nexus-erp-operations-portal.vercel.app](https://nexus-erp-operations-portal.vercel.app)
 - **Hosted Platform**: Vercel (React 18 + Vite + TypeScript)
 
 ---

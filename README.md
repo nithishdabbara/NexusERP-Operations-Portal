@@ -7,7 +7,7 @@ A Mini ERP + CRM system built for a wholesale/distribution company to manage cus
 ## 🔗 Project Links
 
 - **GitHub Repository**: [https://github.com/nithishdabbara/NexusERP-Operations-Portal](https://github.com/nithishdabbara/NexusERP-Operations-Portal)
-- **Live Frontend URL**: [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app)
+- **Live Frontend URL**: [https://nexus-erp-operations-portal.vercel.app](https://nexus-erp-operations-portal.vercel.app)
 - **Live Backend API URL**: [https://nexuserp-backend-ja9d.onrender.com/api](https://nexuserp-backend-ja9d.onrender.com/api)
 - **Live Database**: Supabase PostgreSQL (`ijnnazbvnufevfyappts`)
 
