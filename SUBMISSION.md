@@ -13,16 +13,16 @@
 ---
 
 ### 2. Live Frontend URL
-- **Vercel Live URL**: `https://mini-erp-crm.vercel.app` *(or your Vercel/Netlify deployment URL)*
+- **Vercel Live URL**: [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app)
 - **Hosted Platform**: Vercel (React 18 + Vite + TypeScript)
 
 ---
 
 ### 3. Live Backend API URL
-- **Render Live API URL**: `https://mini-erp-backend.onrender.com/api` *(or your Render/AWS deployment API URL)*
-- **API Health Check**: `https://mini-erp-backend.onrender.com/api/health`
+- **Render Live API URL**: [https://nexuserp-backend.onrender.com/api](https://nexuserp-backend.onrender.com/api)
+- **API Health Check**: [https://nexuserp-backend.onrender.com/api/health](https://nexuserp-backend.onrender.com/api/health)
 - **Hosted Platform**: Render / AWS (Node.js + Express + TypeScript + Prisma ORM)
-- **Live Supabase Database URI**: `postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres`
+- **Live Supabase Database URI**: `postgresql://postgres.ijnnazbvnufevfyappts:***@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres`
 
 ---
 
