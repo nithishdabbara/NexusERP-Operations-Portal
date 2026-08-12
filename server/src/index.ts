@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Health Check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString(), system: 'Mini ERP + CRM API' });
+  res.json({ status: 'ok', timestamp: new Date().toISOString(), system: 'NexusERP API' });
 });
 
 // API Routes
@@ -37,5 +37,5 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Mini ERP + CRM Server running on port ${PORT}`);
+  console.log(`🚀 NexusERP Server running on port ${PORT}`);
 });

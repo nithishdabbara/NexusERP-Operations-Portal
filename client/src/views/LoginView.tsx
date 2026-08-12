@@ -43,12 +43,12 @@ export const LoginView: React.FC<LoginViewProps> = ({ onShowToast }) => {
     <div className="login-bg">
       <div className="login-card">
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
-          <div className="logo-badge" style={{ margin: '0 auto 12px auto', width: '48px', height: '48px', fontSize: '22px' }}>
-            ERP
+          <div className="logo-badge" style={{ margin: '0 auto 12px auto', width: '54px', height: '54px', fontSize: '15px', fontWeight: 800 }}>
+            NEXUS
           </div>
-          <h1 style={{ fontSize: '22px', fontWeight: 800 }}>Mini ERP + CRM Portal</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: 800 }}>NexusERP Portal</h1>
           <p style={{ fontSize: '13px', color: '#9ca3af', marginTop: '4px' }}>
-            Sign in to access wholesale operations dashboard
+            Sign in to access wholesale operations & CRM dashboard
           </p>
         </div>
 

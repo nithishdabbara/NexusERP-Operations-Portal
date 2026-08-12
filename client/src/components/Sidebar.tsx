@@ -21,10 +21,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab }) =
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <div className="logo-badge">ERP</div>
+        <div className="logo-badge" style={{ fontSize: '14px', fontWeight: 800 }}>NEXUS</div>
         <div>
-          <div className="brand-title">Mini ERP + CRM</div>
-          <div className="brand-subtitle">Wholesale Operations</div>
+          <div className="brand-title">NexusERP</div>
+          <div className="brand-subtitle">Wholesale & CRM</div>
         </div>
       </div>
 

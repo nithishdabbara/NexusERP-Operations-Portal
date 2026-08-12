@@ -15,11 +15,11 @@ export const generateChallanPDF = (challan: any, res: Response) => {
     .fillColor(primaryColor)
     .font('Helvetica-Bold')
     .fontSize(24)
-    .text('MINI ERP + CRM', 40, 40)
+    .text('NEXUS ERP', 40, 40)
     .font('Helvetica')
     .fontSize(10)
     .fillColor(secondaryColor)
-    .text('Wholesale & Distribution Operations Portal', 40, 68);
+    .text('Wholesale & CRM Operations Portal', 40, 68);
 
   // Title: Sales Challan / Invoice
   doc

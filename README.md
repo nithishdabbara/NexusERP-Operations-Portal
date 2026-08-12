@@ -1,4 +1,4 @@
-# Mini ERP + CRM Operations Portal
+# NexusERP Operations Portal
 
 Full-stack Mini ERP and CRM Operations system built for wholesale and distribution companies. Deals with customers, inventory tracking, stock movement audit logs, and multi-item sales challans with atomic stock reduction and PDF invoice exports.
 
