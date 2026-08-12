@@ -7,14 +7,8 @@
 ## 📋 Required Submission Checkpoints (Items 1–8)
 
 ### 1. GitHub Repository Link
-- **Repository URL**: `https://github.com/YOUR_GITHUB_USERNAME/nexuserp-operations-portal` *(Replace with your GitHub repository link after pushing)*
-
-> **Quick Push Command**:
-> ```bash
-> git remote add origin https://github.com/YOUR_GITHUB_USERNAME/nexuserp-operations-portal.git
-> git branch -M main
-> git push -u origin main
-> ```
+- **Repository URL**: [https://github.com/nithishdabbara/NexusERP-Operations-Portal](https://github.com/nithishdabbara/NexusERP-Operations-Portal)
+- **Status**: Live & Tracked (`main` branch)
 
 ---
 
