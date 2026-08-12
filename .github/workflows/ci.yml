@@ -1,4 +1,4 @@
-name: Mini ERP CI Workflow
+name: NexusERP CI Workflow
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,6 @@ jobs:
           cd server
           npm ci
           npx prisma generate
-          npx prisma db push --skip-generate
           npm run build
 
       - name: Install & Build Frontend

@@ -85,6 +85,25 @@ docker-compose up --build
 
 ---
 
+## ☁️ Vercel & Render Deployment Settings
+
+### Vercel (Frontend Deployment)
+- **Root Directory**: `client` *(or leave blank if using root [`vercel.json`](file:///e:/New%20folder/vercel.json))*
+- **Framework Preset**: `Vite`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+### Render (Backend Deployment)
+- **Root Directory**: `server`
+- **Build Command**: `npm install && npx prisma generate && npm run build`
+- **Start Command**: `npm start`
+- **Environment Variables**:
+  - `DATABASE_URL` = `postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres`
+  - `JWT_SECRET` = `mini_erp_super_secret_jwt_key_2026`
+  - `PORT` = `5000`
+
+---
+
 ## 📖 Core REST API Endpoints
 
 - `POST /api/auth/login` — Login & issue JWT token
