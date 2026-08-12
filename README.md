@@ -1,92 +1,58 @@
 # NexusERP Operations Portal
 
-Full-stack Mini ERP and CRM Operations Portal built for wholesale and distribution companies. Deals with customers, inventory tracking, stock movement audit logs, and multi-item sales challans with atomic stock reduction, price snapshots, and streaming PDF invoice generation.
+A Mini ERP + CRM system built for a wholesale/distribution company to manage customers, stock inventory, and sales challans.
 
 ---
 
-## 🔗 Live Submission Links & Status
+## 🔗 Project Links
 
-| Resource | Hosted Platform | URL / Connection |
-| :--- | :--- | :--- |
-| **GitHub Repository** | GitHub | [nithishdabbara/NexusERP-Operations-Portal](https://github.com/nithishdabbara/NexusERP-Operations-Portal) |
-| **Live Frontend App** | Vercel | [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app) |
-| **Live Backend REST API** | Render | [https://nexuserp-backend.onrender.com/api](https://nexuserp-backend.onrender.com/api) |
-| **API Health Check** | Render | [https://nexuserp-backend.onrender.com/api/health](https://nexuserp-backend.onrender.com/api/health) |
-| **Cloud Database** | Supabase PostgreSQL | `postgresql://postgres.ijnnazbvnufevfyappts:***@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres` |
+- **GitHub Repository**: [https://github.com/nithishdabbara/NexusERP-Operations-Portal](https://github.com/nithishdabbara/NexusERP-Operations-Portal)
+- **Live Frontend URL**: [https://nexuserp-operations-portal.vercel.app](https://nexuserp-operations-portal.vercel.app)
+- **Live Backend API URL**: [https://nexuserp-backend.onrender.com/api](https://nexuserp-backend.onrender.com/api)
+- **Live Database**: Supabase PostgreSQL (`ijnnazbvnufevfyappts`)
 
 ---
 
-## 🔑 Pre-Seeded Test Login Credentials
+## 🔑 Test Login Credentials
 
-Password for all accounts: **`Password123!`**
+Password for all roles: `Password123!`
 
-| Role | Email | Password | Scope & Module Permissions |
+| Role | Email | Password | Allowed Access |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@company.com` | `Password123!` | Full control over all ERP & CRM modules |
-| **Sales** | `sales@company.com` | `Password123!` | Customer CRM, Follow-ups, Create/Confirm Sales Challans |
-| **Warehouse** | `warehouse@company.com` | `Password123!` | Manage Products, Stock Level Adjustments (IN/OUT), Audit Logs |
-| **Accounts** | `accounts@company.com` | `Password123!` | View Challans, Customer Lists, Financial Dashboards |
-
-> 💡 **Header Quick Demo Role Switcher**: The live application header includes a **1-Click Role Switcher** dropdown allowing reviewers to switch between Admin, Sales, Warehouse, and Accounts roles instantly to test RBAC permissions.
+| **Admin** | `admin@company.com` | `Password123!` | Full access across all modules |
+| **Sales** | `sales@company.com` | `Password123!` | Customer CRM, Follow-ups, Create/Confirm Challans |
+| **Warehouse** | `warehouse@company.com` | `Password123!` | Products, Stock Adjustments (IN/OUT), Audit Logs |
+| **Accounts** | `accounts@company.com` | `Password123!` | View Challans, Financial Reports, Customer Lists |
 
 ---
 
-## 🌟 Core Modules & Architecture Highlights
-
-1. **Role-Based Access Control (RBAC)**:
-   - Secured via JWT tokens (`Bearer <token>`) and role guards (`ADMIN`, `SALES`, `WAREHOUSE`, `ACCOUNTS`).
-
-2. **Atomic Stock Transaction Engine**:
-   - When a Sales Challan is confirmed, stock levels are checked in real-time.
-   - If stock is insufficient, returns a clear `HTTP 400 Bad Request` specifying deficient products.
-   - Deducts stock atomically inside a Prisma transaction (`$transaction`) and writes `OUT` audit logs to `StockLog`.
-
-3. **Product Price & Details Snapshot**:
-   - Line items preserve product snapshot data (`productName`, `productSku`, `unitPrice`) at creation time. Historical sales records remain intact even if product prices or titles change later.
-
-4. **Streaming PDF Invoice Export**:
-   - Integrated streaming PDF generator (`pdfkit`) formats professional sales challans/invoices for instant download and printing.
-
----
-
-## 🏗️ Technical Architecture Diagram
+## 🏗️ Architecture Explanation
 
 ```
-+-------------------------------------------------------------+
-|               React 18 + Vite UI (Vercel)                   |
-| (Dashboard, CRM, Product Inventory, Sales Challans, Auth)   |
-+------------------------------+------------------------------+
-                               |
-                        REST APIs (JSON)
-                               |
-+------------------------------v------------------------------+
-|            Express.js + Node.js API (Render)                |
-|   - JWT Authentication & RBAC Role Guards                   |
-|   - Zod Schema Validation & Error Handling Middleware       |
-|   - Stock Engine: Atomic Prisma Transactions ($transaction)  |
-|   - PDFKit Invoice Streaming                                |
-+------------------------------+------------------------------+
-                               |
-                     Prisma ORM Layer
-                               |
-+------------------------------v------------------------------+
-|             Cloud PostgreSQL (Supabase)                    |
-| (users, customers, products, stock_logs, challans, items)   |
-+-------------------------------------------------------------+
+[ React 18 Frontend (Vite) ] ──(REST API)──> [ Node.js + Express API ] ──(Prisma)──> [ Supabase PostgreSQL ]
 ```
+
+- **Frontend**: React 18, TypeScript, Vite, responsive admin UI with role switching.
+- **Backend**: Node.js, Express.js, TypeScript, REST APIs with Zod schema validation.
+- **Database**: PostgreSQL on Supabase managed via Prisma ORM.
+- **Authentication**: JWT token authentication with role-based middleware guards.
+- **Business Logic**: Stock deduction on Challan confirmation runs inside atomic database transactions (`$transaction`) to prevent negative inventory. Line items preserve product price snapshots at creation time. PDF invoice streaming via `pdfkit`.
 
 ---
 
-## 💻 Setup Instructions
+## 🚀 Setup & Local Running
 
-### 1. Local Quick Run (Zero-Config)
+### Environment Variables (`server/.env`)
+```env
+PORT=5000
+DATABASE_URL="postgresql://postgres.ijnnazbvnufevfyappts:P5Vqn0ALIGxUcJsG@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
+JWT_SECRET="mini_erp_super_secret_jwt_key_2026"
+```
+
+### Local Execution
 
 ```bash
-# Clone repository
-git clone https://github.com/nithishdabbara/NexusERP-Operations-Portal.git
-cd NexusERP-Operations-Portal
-
-# 1. Start Backend API (/server)
+# 1. Backend Server
 cd server
 npm install
 npx prisma generate
@@ -94,45 +60,34 @@ npx prisma db push
 npx ts-node prisma/seed.ts
 npm run dev
 
-# 2. Start Frontend App (/client in new terminal)
-cd ../client
+# 2. Frontend App (separate terminal)
+cd client
 npm install
 npm run dev
 ```
-- **Frontend App**: `http://localhost:3000`
-- **Backend Server**: `http://localhost:5000`
+
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5000`
 
 ---
 
-### 2. Docker Deployment
+## 📖 Core REST API Endpoints
 
-```bash
-docker-compose up --build
-```
-- Runs multi-container setup: Frontend (Port 3000), Backend (Port 5000), and PostgreSQL (Port 5432).
+- `POST /api/auth/login` — Login & issue JWT token
+- `GET /api/customers` — Get customers (supports search & type/status filter)
+- `POST /api/customers` — Add customer
+- `POST /api/customers/:id/followups` — Add CRM follow-up note
+- `GET /api/products` — Get product catalog & low stock alerts
+- `POST /api/products/:id/adjust-stock` — Manual stock adjustment (IN/OUT)
+- `GET /api/products/stock-logs` — Global stock movement audit history
+- `GET /api/challans` — List sales challans
+- `POST /api/challans` — Create sales challan (Draft or Confirmed with atomic stock deduction)
+- `GET /api/challans/:id/pdf` — Stream/download PDF Invoice
 
 ---
 
-## 📖 API Documentation & Postman Collection
+## 🎯 Known Limitations & Assumptions
 
-Import [`postman_collection.json`](file:///e:/New%20folder/postman_collection.json) directly into Postman to test all REST endpoints.
-
-| Category | HTTP Method | Endpoint | Description | Access Roles |
-| :--- | :--- | :--- | :--- | :--- |
-| **Auth** | `POST` | `/api/auth/login` | Authenticate user & issue JWT | Public |
-| **Auth** | `GET` | `/api/auth/me` | Get current user profile | All Roles |
-| **Dashboard** | `GET` | `/api/dashboard/stats` | Aggregated ERP & CRM metrics | All Roles |
-| **Customers** | `GET` | `/api/customers` | Search & filter customers | All Roles |
-| **Customers** | `POST` | `/api/customers` | Add new customer | Admin, Sales |
-| **Customers** | `GET` | `/api/customers/:id` | Get customer details & follow-up logs | All Roles |
-| **Customers** | `PUT` | `/api/customers/:id` | Edit customer details | Admin, Sales |
-| **Customers** | `POST` | `/api/customers/:id/followups` | Add CRM follow-up note | Admin, Sales |
-| **Products** | `GET` | `/api/products` | Catalog & stock alert list | All Roles |
-| **Products** | `POST` | `/api/products` | Create product item | Admin, Warehouse |
-| **Products** | `PUT` | `/api/products/:id` | Edit product item | Admin, Warehouse |
-| **Products** | `POST` | `/api/products/:id/adjust-stock` | Adjust stock level (IN/OUT) | Admin, Warehouse |
-| **Stock Logs** | `GET` | `/api/products/stock-logs` | Global stock movement audit trail | All Roles |
-| **Challans** | `GET` | `/api/challans` | List sales challans | All Roles |
-| **Challans** | `POST` | `/api/challans` | Create Challan (Draft / Confirmed) | Admin, Sales |
-| **Challans** | `PUT` | `/api/challans/:id/status` | Update status (Confirm / Cancel) | All Roles |
-| **Challans** | `GET` | `/api/challans/:id/pdf` | Stream & Download PDF Invoice | All Roles |
+1. **Email Alerts**: Low stock alerts are highlighted in real-time on the UI dashboard; email/SMS alerts can be integrated via webhooks.
+2. **Draft Challans**: Draft sales challans reserve no inventory until confirmed.
+3. **Single Company Scope**: Built specifically as an internal operations portal for a single distribution company.
