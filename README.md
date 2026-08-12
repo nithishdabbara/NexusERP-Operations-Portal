@@ -71,6 +71,20 @@ npm run dev
 
 ---
 
+## 🐳 Docker Setup (Bonus Point)
+
+Run the full stack (Frontend, Backend & PostgreSQL) with a single command:
+
+```bash
+docker-compose up --build
+```
+
+- **Frontend Container (Nginx)**: `http://localhost:3000`
+- **Backend Container (Node.js API)**: `http://localhost:5000`
+- **PostgreSQL Container**: `localhost:5432`
+
+---
+
 ## 📖 Core REST API Endpoints
 
 - `POST /api/auth/login` — Login & issue JWT token
