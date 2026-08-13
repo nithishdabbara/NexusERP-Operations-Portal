@@ -21,7 +21,27 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Health Check
+// API Root & Health Check Handlers
+const apiWelcome = (req: express.Request, res: express.Response) => {
+  res.json({
+    success: true,
+    message: 'NexusERP Operations Portal REST API',
+    version: '1.0.0',
+    status: 'online',
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth/login',
+      customers: '/api/customers',
+      products: '/api/products',
+      challans: '/api/challans',
+      dashboard: '/api/dashboard/stats'
+    }
+  });
+};
+
+app.get('/', apiWelcome);
+app.get('/api', apiWelcome);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString(), system: 'NexusERP API' });
 });
