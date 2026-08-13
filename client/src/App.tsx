@@ -23,7 +23,7 @@ const MainApp: React.FC = () => {
 
   if (loading) {
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0b0f19', color: '#9ca3af' }}>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f8fafc', color: '#475569', fontWeight: 500 }}>
         Loading Mini ERP + CRM Portal...
       </div>
     );

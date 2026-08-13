@@ -43,11 +43,11 @@ export const LoginView: React.FC<LoginViewProps> = ({ onShowToast }) => {
     <div className="login-bg">
       <div className="login-card">
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
-          <div className="logo-badge" style={{ margin: '0 auto 12px auto', width: '54px', height: '54px', fontSize: '15px', fontWeight: 800 }}>
+          <div className="logo-badge" style={{ margin: '0 auto 12px auto', width: '48px', height: '48px', fontSize: '13px', fontWeight: 800 }}>
             NEXUS
           </div>
-          <h1 style={{ fontSize: '24px', fontWeight: 800 }}>NexusERP Portal</h1>
-          <p style={{ fontSize: '13px', color: '#9ca3af', marginTop: '4px' }}>
+          <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a' }}>NexusERP Operations Portal</h1>
+          <p style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>
             Sign in to access wholesale operations & CRM dashboard
           </p>
         </div>
@@ -64,7 +64,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onShowToast }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <Mail size={16} color="#9ca3af" style={{ position: 'absolute', left: '12px', top: '12px' }} />
+              <Mail size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '11px' }} />
             </div>
           </div>
 
@@ -79,20 +79,20 @@ export const LoginView: React.FC<LoginViewProps> = ({ onShowToast }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Lock size={16} color="#9ca3af" style={{ position: 'absolute', left: '12px', top: '12px' }} />
+              <Lock size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '11px' }} />
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '12px' }} disabled={submitting}>
+          <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '10px' }} disabled={submitting}>
             <LogIn size={16} /> {submitting ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
 
         <div className="demo-credentials-box">
-          <div style={{ fontWeight: 600, color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <ShieldCheck size={14} color="#6366f1" /> Quick Demo Role Switcher:
+          <div style={{ fontWeight: 600, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <ShieldCheck size={14} color="#2563eb" /> Quick Demo Role Switcher:
           </div>
-          <div style={{ color: '#9ca3af', fontSize: '11px', marginTop: '2px' }}>
+          <div style={{ color: '#64748b', fontSize: '11px', marginTop: '2px' }}>
             Click any role to autofill test credentials (Password: <code>Password123!</code>):
           </div>
 
